@@ -26,7 +26,8 @@ SECRET_KEY = 'i$3c2w3@48z2jy*772^14$w$+d+ila!j31$h@w)u8j$h0v2h(l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'jdfranco-finsystem.herokuapp.com']
 
 
 # Application definition
