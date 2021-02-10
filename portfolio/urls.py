@@ -2,11 +2,14 @@ from django.conf.urls import url
 from . import views
 from django.urls import path
 
+
 app_name = 'portfolio'
 urlpatterns = [
 
     path('', views.home, name='home'),
     url(r'^home/$', views.home, name='home'),
+    url(r'^signup/$', views.signup, name='signup'),
+    url(r'^password/$', views.change_password, name='change_password'),
 
     path('customer_list', views.customer_list, name='customer_list'),
     path('customer/<int:pk>/edit/', views.customer_edit, name='customer_edit'),
