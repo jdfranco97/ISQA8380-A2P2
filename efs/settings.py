@@ -87,9 +87,9 @@ WSGI_APPLICATION = 'efs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dgb',
-        'USER': 'maverick',
-        'PASSWORD': 'YOUR PW'
+        'NAME': 'finsysdb',
+        'USER': 'postgres',
+        'PASSWORD': 'saitek'
     }
 }
 
