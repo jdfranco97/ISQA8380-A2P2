@@ -67,7 +67,6 @@
             <th>Current Stock Price ($)</th>
             <th>Current Stock Value ($)</th>
             <th>Gain/Loss ($)</th>
-
         </tr>
         </thead>
         <tbody>
@@ -116,11 +115,11 @@
             <th>Recent Value ($)</th>
             <th>Recent Date</th>
             <th>Gain/Loss ($)</th>
-
         </tr>
         </thead>
         <tbody>
         {% for investment in investments %}
+            {% if investment.results_by_investment > 0 %}
             <tr>
                 <td>{{ investment.customer }}</td>
                 <td>{{ investment.category }}</td>
@@ -129,9 +128,20 @@
                 <td>{{ investment.acquired_date }}</td>
                 <td>{{ investment.recent_value|intcomma }}</td>
                 <td>{{ investment.recent_date }}</td>
-                <td>{{ investment.recent_value |sub:investment.acquired_value|intcomma }}</td>
-
+                <td style="color: green">{{ investment.results_by_investment|intcomma }}</td>
             </tr>
+            {% else %}
+            <tr>
+                <td>{{ investment.customer }}</td>
+                <td>{{ investment.category }}</td>
+                <td>{{ investment.description }}</td>
+                <td>{{ investment.acquired_value|intcomma }}</td>
+                <td>{{ investment.acquired_date }}</td>
+                <td>{{ investment.recent_value|intcomma }}</td>
+                <td>{{ investment.recent_date }}</td>
+                <td style="color: red">{{ investment.results_by_investment|intcomma }}</td>
+            </tr>
+            {% endif %}
         {% endfor %}
         </tbody>
     </table>
