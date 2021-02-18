@@ -84,3 +84,6 @@ class Stock(models.Model):
 
     def current_stock_value(self):
         return float(self.current_stock_price()) * float(self.shares)
+
+    def current_stock_gain(self):
+        return float(self.current_stock_value()) - float(self.initial_stock_value())
