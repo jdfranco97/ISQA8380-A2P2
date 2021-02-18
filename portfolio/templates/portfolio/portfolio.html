@@ -2,7 +2,7 @@
 {% load humanize %}
 {% block content %}
 {% load mathfilters %}
-
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
     <html>
             <head>
                 <meta charset="UTF-8">
@@ -116,6 +116,45 @@
         </tbody>
     </table>
 </div>
+
+
+
+
+                     <div id="container" style="width: 75%;">
+    <canvas id="pie-chart"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+  <script>
+
+    var config = {
+      type: 'pie',
+      data: {
+        datasets: [{
+          data: {{ data|safe }},
+          backgroundColor: [
+            '#32a852', '#6e226b', '#21a3db', '#15c21b', '#c21515'
+          ],
+          label: 'Population'
+        }],
+        labels: {{ labels|safe }}
+      },
+      options: {
+        responsive: true
+      }
+    };
+
+    window.onload = function() {
+      var ctx = document.getElementById('pie-chart').getContext('2d');
+      window.myPie = new Chart(ctx, config);
+    };
+
+  </script>
+
+
+
+
+
 <div class="row">
     <h2 style="padding-left: 15Px">Investment Information</h2>
 </div>

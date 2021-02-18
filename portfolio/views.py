@@ -187,6 +187,14 @@ def change_password(request):
 
 @login_required
 def portfolio(request, pk):
+    labels = []
+    data = []
+    queryset = Stock.objects.filter(customer=pk)
+    for stock in queryset:
+        labels.append(stock.name)
+        data.append(stock.current_stock_value())
+
+
     customer = get_object_or_404(Customer, pk=pk)
     customers = Customer.objects.filter(created_date__lte=timezone.now())
     investments = Investment.objects.filter(customer=pk)
@@ -210,6 +218,8 @@ def portfolio(request, pk):
                                                         'sum_recent_value': sum_recent_value,
                                                         'sum_current_stocks_value': sum_current_stocks_value,
                                                         'sum_of_initial_stock_value': sum_of_initial_stock_value,
+                                                        'labels': labels,
+                                                        'data': data,
                                                         })
 
 
