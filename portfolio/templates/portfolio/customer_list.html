@@ -1,7 +1,6 @@
 {% extends 'portfolio/base.html' %}
 {% block content %}
-
-    <html>
+<html>
     <head>
         <meta charset="UTF-8">
         <title>Eagle Financial</title>
@@ -9,11 +8,11 @@
 
     </head>
     <body>
-    <style>
-        body {
-            background-color: white;
-        }
-    </style>
+        <style>
+            body {
+                background-color: white;
+            }
+        </style>
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
@@ -55,14 +54,12 @@
                     <td>{{ customer.zipcode }}</td>
                     <td>{{ customer.email }}</td>
                     <td>{{ customer.cell_phone }}</td>
-                    <td><a href="{% url 'portfolio:customer_edit' pk=customer.pk %}" class="btn btn-warning">Edit</a>
+                    <td><a href="{% url 'portfolio:customer_edit' pk=customer.pk %}" class="btn btn-warning">Edit</a></td>
                     <td><a href="{% url 'portfolio:customer_delete' pk=customer.pk %}"
                            onclick="return confirm('Are you sure you want to delete?')"
-                           class="btn btn-danger">Delete</a>
-                    </td>
-                    </td>
+                           class="btn btn-danger">Delete</a></td>
                     <td><a href="{% url 'portfolio:portfolio' pk=customer.pk %}"
-                           class="btn btn-primary">Portfolio</a>
+                           class="btn btn-primary">Portfolio</a></td>
                 </tr>
             {% endfor %}
             </tbody>
