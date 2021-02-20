@@ -54,7 +54,6 @@ class Investment(models.Model):
         return self.recent_value - self.acquired_value
 
 
-
 class Stock(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='stocks')
     symbol = models.CharField(max_length=10)
@@ -71,12 +70,12 @@ class Stock(models.Model):
         return str(self.customer)
 
     def initial_stock_value(self):
-        return self.shares * self.purchase_price
+        return float(self.shares) * float(self.purchase_price)
 
     def current_stock_price(self):
         symbol_f = str(self.symbol)
         main_api = 'http://api.marketstack.com/v1/eod?'
-        api_key = 'access_key=519a019d99ecbfc664fdfdf2b73d331d&limit=1&symbols='
+        api_key = 'access_key=4eda317dcb13a02db10b7175cbcad0c4&limit=1&symbols='
         url = main_api + api_key + symbol_f
         json_data = requests.get(url).json()
         open_price = float(json_data["data"][0]["open"])
