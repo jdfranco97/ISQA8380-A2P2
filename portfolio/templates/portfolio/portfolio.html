@@ -58,7 +58,7 @@
         </thead>
         <tbody>
             <tr>
-                <td>CurrencyFormatted({{ sum_acquired_value.acquired_value__sum |addition:sum_of_initial_stock_value }})</td>
+                <td>{{ sum_acquired_value.acquired_value__sum |addition:sum_of_initial_stock_value }}</td>
                 <td>{{ sum_recent_value.recent_value__sum |addition:sum_current_stocks_value|intcomma }}</td>
                 <td>{{ sum_recent_value.recent_value__sum |addition:sum_current_stocks_value |sub:sum_acquired_value.acquired_value__sum|intcomma }}</td>
             </tr>
